@@ -4,14 +4,20 @@ body {
 
 .jumbotron {
 	background-color: #fff;
-	padding-left: 150px;
-	padding-right: 150px;
+	padding-left: 50px;
+	padding-right: 50px;
 	border-radius: 0px 0px 25px 25px;
+	height: 580px;
+}
+
+.navbar {
+	padding-top: 20px;
+	border-radius: 25px 25px 0px 0px;
 }
 
 #progressBar {
 	background-color: #f7f9fc;
-	height: 40px;
+	height: 30px;
 	margin-bottom: 20px;
 }
 
