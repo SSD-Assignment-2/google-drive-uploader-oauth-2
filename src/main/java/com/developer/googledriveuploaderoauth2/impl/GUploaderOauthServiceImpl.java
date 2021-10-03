@@ -43,3 +43,20 @@ public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 
 	}
 }
+	@Override
+	public boolean isUserAuthenticated() throws Exception {
+		Credential credential = getCredentials();
+		if (credential != null) {
+			boolean isValidToken = credential.refreshToken();
+			System.out.println("Whether Token is valid, " + isValidToken);
+			return isValidToken;
+		}
+		return false;
+	}
+
+	@Override
+	public Credential getCredentials() throws IOException {
+		return codeFlow.loadCredential(GUploaderApplicationConstant.KEY_FOR_IDENTIFY_USER);
+	}
+
+
