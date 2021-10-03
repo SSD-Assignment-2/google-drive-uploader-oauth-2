@@ -42,7 +42,7 @@ public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 				GUploaderApplicationConstant.SCOPES).setDataStoreFactory(fileDataStoreFactory).build();
 
 	}
-}
+
 	@Override
 	public boolean isUserAuthenticated() throws Exception {
 		Credential credential = getCredentials();
@@ -58,5 +58,15 @@ public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 	public Credential getCredentials() throws IOException {
 		return codeFlow.loadCredential(GUploaderApplicationConstant.KEY_FOR_IDENTIFY_USER);
 	}
+
+	@Override
+	public String authenticateUserThroughGoogle() throws Exception {
+		GoogleAuthorizationCodeRequestUrl codeRequestUrl = codeFlow.newAuthorizationUrl();
+		String redirectUrl = codeRequestUrl.setRedirectUri(appConfig.getCallbackURI()).setAccessType("offline").build();
+		System.out.println("Redirected URL, " + redirectUrl);
+		return redirectUrl;
+	}
+}
+	
 
 
