@@ -66,6 +66,13 @@ public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 		System.out.println("Redirected URL, " + redirectUrl);
 		return redirectUrl;
 	}
+	
+	@Override
+	public void exchangeAuthenticationCodeForTokens(String code) throws Exception {
+		GoogleTokenResponse googleTokenResponse = codeFlow.newTokenRequest(code).setRedirectUri(appConfig.getCallbackURI()).execute();
+		codeFlow.createAndStoreCredential(googleTokenResponse, GUploaderApplicationConstant.KEY_FOR_IDENTIFY_USER);
+	}
+
 }
 	
 

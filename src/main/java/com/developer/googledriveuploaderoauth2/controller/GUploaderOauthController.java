@@ -71,6 +71,27 @@ public class GUploaderOauthController {
 		System.out.println("Calling the SSO");
 		response.sendRedirect(gUploaderOauthService.authenticateUserThroughGoogle());
 	}
+	
+	/**
+	 * Applications Callback URI for redirection from Google auth server after user
+	 * approval/consent
+	 * 
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
+	@GetMapping("/oauth/callback")
+	public String saveAuthenticationCode(HttpServletRequest request) throws Exception {
+		System.out.println("Invoking the SSO Callback");
+		String authenticateCode = request.getParameter("code");
+		System.out.println("Code value of the SSO Callback :, " + authenticateCode);
 
+		if (authenticateCode != null) {
+			gUploaderOauthService.exchangeAuthenticationCodeForTokens(authenticateCode);
+			return "redirect:/home.html";
+		}
+		return "redirect:/main.html";
+	}
+	
 }
 
