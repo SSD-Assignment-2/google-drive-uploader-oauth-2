@@ -93,5 +93,22 @@ public class GUploaderOauthController {
 		return "redirect:/main.html";
 	}
 	
+	/**
+	 * Handles the files being uploaded to GDrive
+	 * 
+	 * @param request
+	 * @param uploadedFile
+	 * @return
+	 * @throws Exception
+	 */
+	@PostMapping("/upload")
+	public String uploadNewFile(HttpServletRequest request, @ModelAttribute GUploaderFileUpload uploadedFile) throws Exception {
+		System.out.println("Controller for the file upload");
+		MultipartFile multipartFile = uploadedFile.getMultipartFile();
+		System.out.println("File is:"+multipartFile);
+		gUploaderDriveService.uploadNewFile(multipartFile);
+		return "redirect:/home?status=successfully updated";
+	}
+	
 }
 

@@ -7,8 +7,6 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,6 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 @Service
 public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 
-	private final Logger logger = LoggerFactory.getLogger(GUploaderOauthServiceImpl.class);
 	private GoogleAuthorizationCodeFlow codeFlow;
 	private FileDataStoreFactory fileDataStoreFactory;
 

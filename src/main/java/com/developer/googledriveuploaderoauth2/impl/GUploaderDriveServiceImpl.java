@@ -2,8 +2,6 @@ package com.developer.googledriveuploaderoauth2.impl;
 
 import javax.annotation.PostConstruct;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -20,7 +18,6 @@ import com.google.api.services.drive.model.File;
 @Service
 public class GUploaderDriveServiceImpl implements GUploaderDriveService {
 
-	private final Logger logger = LoggerFactory.getLogger(GUploaderDriveServiceImpl.class);
 
 	private Drive driveService;
 
