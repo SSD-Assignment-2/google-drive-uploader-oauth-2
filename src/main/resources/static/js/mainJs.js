@@ -64,7 +64,7 @@ function uploadIsFailed(e) {
 // function for start the uploading process
 function startUpload() {
 	if (document.getElementById('file').files.length <= 0) {
-		swal("Cannot Upload the File(s)!", "Please select file(s) to upload", "warning");
+		swal("No any selected File(s)!", "Please select file(s) to upload", "warning");
 	} else {
 		totalValOfUploadedFiles = uploadedFiles = 0;
 		uploadNextFile();
