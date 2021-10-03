@@ -94,6 +94,19 @@ public class GUploaderOauthController {
 	}
 	
 	/**
+	 * Handles logout
+	 * 
+	 * @return
+	 * @throws Exception 
+	 */
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request) throws Exception {
+		System.out.println("Logging out the user");
+		gUploaderOauthService.deleteUserSession(request);
+		return "redirect:/login";
+	}
+	
+	/**
 	 * Handles the files being uploaded to GDrive
 	 * 
 	 * @param request

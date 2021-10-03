@@ -69,6 +69,18 @@ public class GUploaderOauthServiceImpl implements GUploaderOauthService {
 		GoogleTokenResponse googleTokenResponse = codeFlow.newTokenRequest(code).setRedirectUri(appConfig.getCallbackURI()).execute();
 		codeFlow.createAndStoreCredential(googleTokenResponse, GUploaderApplicationConstant.KEY_FOR_IDENTIFY_USER);
 	}
+	
+	@Override
+	public void deleteUserSession(HttpServletRequest request) throws Exception {
+		HttpSession httpSession = request.getSession(false);
+		httpSession = request.getSession(true);
+        if (httpSession != null) {
+        	httpSession.invalidate();
+            System.out.println("User Logged Out");
+        }
+		 //to revoke token and clear the local storage
+        fileDataStoreFactory.getDataStore(appConfig.getCredentialsFolder().getFilename()).clear();
+	}
 
 }
 	
