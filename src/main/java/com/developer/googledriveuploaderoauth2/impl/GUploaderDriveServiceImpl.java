@@ -39,8 +39,7 @@ public class GUploaderDriveServiceImpl implements GUploaderDriveService {
 
 	@Override
 	public void uploadNewFile(MultipartFile multipartFile) throws Exception {
-		logger.debug("Inside Upload Service...");
-        System.out.println("Inside Upload Service...");
+		System.out.println("Implementation for uploading a new file");
         
 		String content_Type = multipartFile.getContentType();
 		String path = gUploaderApplicationConfig.getTemporaryFolder();
@@ -55,7 +54,7 @@ public class GUploaderDriveServiceImpl implements GUploaderDriveService {
 		FileContent media_Content = new FileContent(content_Type, transfered_File);
 		File file = driveService.files().create(file_metadata, media_Content).setFields("id").execute();
 
-		logger.debug("File ID: " + file.getName() + ", " + file.getId());
+		System.out.println("Uploaded File ID: " + file.getName() + ", " + file.getId());
 	}
 
 }
